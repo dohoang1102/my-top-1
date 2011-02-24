@@ -15,6 +15,9 @@
 		2899E5220DE3E06400AC0155 /* MyTop1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* MyTop1ViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* MyTop1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MyTop1ViewController.m */; };
+		AA6295C01315FACF00492AA7 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6295BB1315FACF00492AA7 /* Call.m */; };
+		AA6295C11315FACF00492AA7 /* README.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = AA6295BC1315FACF00492AA7 /* README.mkdn */; };
+		AA6295C21315FACF00492AA7 /* UIAlertView+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6295BE1315FACF00492AA7 /* UIAlertView+ShowMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,12 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MyTop1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTop1_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MyTop1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyTop1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		AA6295BA1315FACF00492AA7 /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
+		AA6295BB1315FACF00492AA7 /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
+		AA6295BC1315FACF00492AA7 /* README.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mkdn; sourceTree = "<group>"; };
+		AA6295BD1315FACF00492AA7 /* UIAlertView+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ShowMessage.h"; sourceTree = "<group>"; };
+		AA6295BE1315FACF00492AA7 /* UIAlertView+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ShowMessage.m"; sourceTree = "<group>"; };
+		AA6295BF1315FACF00492AA7 /* UIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitHelpers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +59,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AA6295B91315FACF00492AA7 /* UIKitHelpers */,
 				1D3623240D0F684500981E51 /* MyTop1AppDelegate.h */,
 				1D3623250D0F684500981E51 /* MyTop1AppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* MyTop1ViewController.h */,
@@ -107,6 +117,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA6295B91315FACF00492AA7 /* UIKitHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				AA6295BA1315FACF00492AA7 /* Call.h */,
+				AA6295BB1315FACF00492AA7 /* Call.m */,
+				AA6295BC1315FACF00492AA7 /* README.mkdn */,
+				AA6295BD1315FACF00492AA7 /* UIAlertView+ShowMessage.h */,
+				AA6295BE1315FACF00492AA7 /* UIAlertView+ShowMessage.m */,
+				AA6295BF1315FACF00492AA7 /* UIKitHelpers.h */,
+			);
+			path = UIKitHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +181,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* MyTop1ViewController.xib in Resources */,
+				AA6295C11315FACF00492AA7 /* README.mkdn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +195,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* MyTop1AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MyTop1ViewController.m in Sources */,
+				AA6295C01315FACF00492AA7 /* Call.m in Sources */,
+				AA6295C21315FACF00492AA7 /* UIAlertView+ShowMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

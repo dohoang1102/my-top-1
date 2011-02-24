@@ -5,6 +5,6 @@
 {
 }
 
-- (BOOL)toNumber:(NSString *)phoneNumber;
++ (BOOL)toNumber:(NSString *)phoneNumber;
 
 @end
