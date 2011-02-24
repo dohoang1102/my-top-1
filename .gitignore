@@ -1,0 +1,11 @@
+# Xcode
+build/*
+*.pbxuser
+*.mode1v3
+
+# Old Skull
+.svn
+
+# MAC OS X stuff
+.DS_Store
+profile
