@@ -66,10 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				AA6295B91315FACF00492AA7 /* UIKitHelpers */,
-				1D3623240D0F684500981E51 /* MyTop1AppDelegate.h */,
-				1D3623250D0F684500981E51 /* MyTop1AppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* MyTop1ViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* MyTop1ViewController.m */,
+				AA74A4B713183EA10082B712 /* App Delegate */,
+				AA74A4B813183EC40082B712 /* View Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -136,6 +134,24 @@
 				AA6295BF1315FACF00492AA7 /* UIKitHelpers.h */,
 			);
 			path = UIKitHelpers;
+			sourceTree = "<group>";
+		};
+		AA74A4B713183EA10082B712 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* MyTop1AppDelegate.h */,
+				1D3623250D0F684500981E51 /* MyTop1AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		AA74A4B813183EC40082B712 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28D7ACF60DDB3853001CB0EB /* MyTop1ViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* MyTop1ViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
