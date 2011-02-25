@@ -10,9 +10,9 @@
 {
   ABPeoplePickerNavigationController *peoplePickerNavigationController = [[ABPeoplePickerNavigationController alloc] init];
   
-  NSArray *phoneNumber = [NSArray arrayWithObject: [NSNumber numberWithInt:kABPersonPhoneProperty]];
+  NSArray *phoneNumber = [NSArray arrayWithObject: [NSNumber numberWithInt: kABPersonPhoneProperty]];
 	
-	peoplePickerNavigationController.displayedProperties = phoneNumber;
+	//peoplePickerNavigationController.displayedProperties = phoneNumber;
   
   peoplePickerNavigationController.peoplePickerDelegate = self;
   
@@ -35,27 +35,30 @@
                                 property:(ABPropertyID)property 
                               identifier:(ABMultiValueIdentifier)identifier
 {
-  NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-  NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-  
-  NSString *fullName; 
-  
-  if(lastName)
-    fullName = [firstName stringByAppendingFormat: @" %@", lastName];
-  else
-    fullName = firstName;
-
-  CFTypeRef propertyReference = ABRecordCopyValue(person, property);
-  
-  CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(propertyReference, identifier);
-
-  CFTypeRef selectedPhoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(propertyReference, propertyValueIndex);
-  CFTypeRef selectedPhoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(propertyReference, propertyValueIndex);
-  
-  NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-    fullName, selectedPhoneNumberLabel, selectedPhoneNumberValue);
-  
-  [self dismissModalViewControllerAnimated: YES];
+  if(property == kABPersonPhoneProperty)
+  {
+    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    
+    NSString *fullName; 
+    
+    if(lastName)
+      fullName = [firstName stringByAppendingFormat: @" %@", lastName];
+    else
+      fullName = firstName;
+    
+    CFTypeRef propertyReference = ABRecordCopyValue(person, property);
+    
+    CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(propertyReference, identifier);
+    
+    CFTypeRef selectedPhoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(propertyReference, propertyValueIndex);
+    CFTypeRef selectedPhoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(propertyReference, propertyValueIndex);
+    
+    NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
+          fullName, selectedPhoneNumberLabel, selectedPhoneNumberValue);
+    
+    [self dismissModalViewControllerAnimated: YES];
+  }
   
 	return NO;
 }
