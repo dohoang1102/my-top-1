@@ -12,7 +12,7 @@
   
   NSArray *phoneNumber = [NSArray arrayWithObject: [NSNumber numberWithInt: kABPersonPhoneProperty]];
 	
-	//peoplePickerNavigationController.displayedProperties = phoneNumber;
+	peoplePickerNavigationController.displayedProperties = phoneNumber;
   
   peoplePickerNavigationController.peoplePickerDelegate = self;
   
