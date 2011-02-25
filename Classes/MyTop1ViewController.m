@@ -20,6 +20,22 @@
 #pragma mark -
 #pragma mark ABPeoplePickerNavigationControllerDelegate
 
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+  return YES;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker 
+      shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+                                property:(ABPropertyID)property 
+                              identifier:(ABMultiValueIdentifier)identifier
+{
+  [self dismissModalViewControllerAnimated: YES];
+  
+	return YES;
+}
+
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
   [self dismissModalViewControllerAnimated: YES];
