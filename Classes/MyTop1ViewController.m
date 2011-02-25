@@ -1,5 +1,4 @@
 #import "MyTop1ViewController.h"
-#import <AddressBookUI/AddressBookUI.h>
 
 @implementation MyTop1ViewController
 
@@ -10,9 +9,20 @@
 {
   ABPeoplePickerNavigationController *peoplePickerNavigationController = [[ABPeoplePickerNavigationController alloc] init];
   
+  peoplePickerNavigationController.peoplePickerDelegate = self;
+  
   [self presentModalViewController: peoplePickerNavigationController animated:YES];
   
   [peoplePickerNavigationController release];   
+}
+
+
+#pragma mark -
+#pragma mark ABPeoplePickerNavigationControllerDelegate
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+  [self dismissModalViewControllerAnimated: YES];
 }
 
 #pragma mark -
