@@ -22,12 +22,42 @@
 }
 
 #pragma mark -
+#pragma mark "Protected" methods
+
+- (NSString *)fullNameFor:(ABRecordRef)person
+{
+  NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+  NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+  
+  if(lastName)
+    return [firstName stringByAppendingFormat: @" %@", lastName];
+  else
+    return firstName;
+}
+
+#pragma mark -
 #pragma mark ABPeoplePickerNavigationControllerDelegate
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-  return YES;
+  NSArray *selectedContactPhoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(ABRecordCopyValue(person, kABPersonPhoneProperty));
+                            
+  if([selectedContactPhoneNumbers count] > 1)
+    return YES;
+  else
+  {
+    CFTypeRef phonePropertyReference = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    
+    NSString *selectedPersonPhoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
+    
+    NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
+      [self fullNameFor: person], selectedPersonPhoneLabel, [selectedContactPhoneNumbers objectAtIndex: 0]);
+    
+    [self dismissModalViewControllerAnimated: YES];
+    
+    return NO;
+  }
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker 
@@ -37,25 +67,15 @@
 {
   if(property == kABPersonPhoneProperty)
   {
-    NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-    NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    CFTypeRef phonePropertyReference = ABRecordCopyValue(person, property);
     
-    NSString *fullName; 
+    CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(phonePropertyReference, identifier);
     
-    if(lastName)
-      fullName = [firstName stringByAppendingFormat: @" %@", lastName];
-    else
-      fullName = firstName;
-    
-    CFTypeRef propertyReference = ABRecordCopyValue(person, property);
-    
-    CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(propertyReference, identifier);
-    
-    CFTypeRef selectedPhoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(propertyReference, propertyValueIndex);
-    CFTypeRef selectedPhoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(propertyReference, propertyValueIndex);
+    CFTypeRef selectedPhoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, propertyValueIndex);
+    CFTypeRef selectedPhoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, propertyValueIndex);
     
     NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-          fullName, selectedPhoneNumberLabel, selectedPhoneNumberValue);
+          [self fullNameFor: person], selectedPhoneNumberLabel, selectedPhoneNumberValue);
     
     [self dismissModalViewControllerAnimated: YES];
   }
@@ -72,7 +92,7 @@
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning 
-  {
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
