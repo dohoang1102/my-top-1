@@ -4,4 +4,6 @@
 {
 }
 
+- (IBAction)showAddressBookContacts:(id)sender;
+
 @end
