@@ -16,7 +16,7 @@
   
   peoplePickerNavigationController.peoplePickerDelegate = self;
   
-  [self presentModalViewController: peoplePickerNavigationController animated:YES];
+  [self presentModalViewController: peoplePickerNavigationController animated: YES];
   
   [peoplePickerNavigationController release];   
 }
@@ -41,18 +41,18 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker
       shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-  NSArray *selectedContactPhoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(ABRecordCopyValue(person, kABPersonPhoneProperty));
+  CFTypeRef selectedPersonPhonePropertyReference = ABRecordCopyValue(person, kABPersonPhoneProperty);
+  
+  NSArray *selectedPersonPhoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(selectedPersonPhonePropertyReference);
                             
-  if([selectedContactPhoneNumbers count] > 1)
+  if([selectedPersonPhoneNumbers count] > 1)
     return YES;
   else
   {
-    CFTypeRef phonePropertyReference = ABRecordCopyValue(person, kABPersonPhoneProperty);
-    
-    NSString *selectedPersonPhoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
+    NSString *selectedPersonPhoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(selectedPersonPhonePropertyReference, 0);
     
     NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-      [self fullNameFor: person], selectedPersonPhoneLabel, [selectedContactPhoneNumbers objectAtIndex: 0]);
+      [self fullNameFor: person], selectedPersonPhoneLabel, [selectedPersonPhoneNumbers objectAtIndex: 0]);
     
     [self dismissModalViewControllerAnimated: YES];
     
@@ -67,15 +67,15 @@
 {
   if(property == kABPersonPhoneProperty)
   {
-    CFTypeRef phonePropertyReference = ABRecordCopyValue(person, property);
+    CFTypeRef propertyReference = ABRecordCopyValue(person, property);
     
-    CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(phonePropertyReference, identifier);
+    CFIndex propertyValueIndex = ABMultiValueGetIndexForIdentifier(propertyReference, identifier);
     
-    CFTypeRef selectedPhoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, propertyValueIndex);
-    CFTypeRef selectedPhoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, propertyValueIndex);
+    NSString *phoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(propertyReference, propertyValueIndex);
+    NSString *phoneNumberValue = (NSString *)ABMultiValueCopyValueAtIndex(propertyReference, propertyValueIndex);
     
     NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-          [self fullNameFor: person], selectedPhoneNumberLabel, selectedPhoneNumberValue);
+          [self fullNameFor: person], phoneNumberLabel, phoneNumberValue);
     
     [self dismissModalViewControllerAnimated: YES];
   }
@@ -94,7 +94,7 @@
 - (void)didReceiveMemoryWarning 
 {
 	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+  [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
@@ -104,7 +104,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc 
 {
