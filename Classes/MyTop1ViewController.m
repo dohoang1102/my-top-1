@@ -49,7 +49,8 @@
                             
   if([phoneNumbers count] == 1)
   {
-    NSString *phoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
+    CFStringRef phoneLabelReference = ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
+    NSString *phoneLabel = (NSString *)ABAddressBookCopyLocalizedLabel(phoneLabelReference);
     
     self.instructionsLabel.text = 
       [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
@@ -74,7 +75,9 @@
     
     CFIndex phonePropertyValueIndex = ABMultiValueGetIndexForIdentifier(phonePropertyReference, identifier);
     
-    NSString *phoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, phonePropertyValueIndex);
+    CFStringRef phoneLabelReference = ABMultiValueCopyLabelAtIndex(phonePropertyReference, phonePropertyValueIndex);
+    NSString *phoneLabel = (NSString *)ABAddressBookCopyLocalizedLabel(phoneLabelReference);
+    
     NSString *phoneNumber = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, phonePropertyValueIndex);
     
     self.instructionsLabel.text = 
