@@ -3,6 +3,8 @@
 
 @implementation MyTop1ViewController
 
+@synthesize instructionsLabel;
+
 #pragma mark -
 #pragma mark IBActions
 
@@ -45,19 +47,20 @@
   
   NSArray *phoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(phonePropertyReference);
                             
-  if([phoneNumbers count] > 1)
-    return YES;
-  else
+  if([phoneNumbers count] == 1)
   {
     NSString *phoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
     
-    NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-      [self fullNameFor: person], phoneLabel, [phoneNumbers objectAtIndex: 0]);
+    self.instructionsLabel.text = 
+      [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
+      [self fullNameFor: person], phoneLabel, [phoneNumbers objectAtIndex: 0]];
     
     [self dismissModalViewControllerAnimated: YES];
     
     return NO;
   }
+  else
+    return YES;
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker 
@@ -71,11 +74,12 @@
     
     CFIndex phonePropertyValueIndex = ABMultiValueGetIndexForIdentifier(phonePropertyReference, identifier);
     
-    NSString *phoneNumberLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, phonePropertyValueIndex);
+    NSString *phoneLabel = (NSString *)ABMultiValueCopyLabelAtIndex(phonePropertyReference, phonePropertyValueIndex);
     NSString *phoneNumber = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, phonePropertyValueIndex);
     
-    NSLog(@"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-      [self fullNameFor: person], phoneNumberLabel, phoneNumber);
+    self.instructionsLabel.text = 
+      [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
+      [self fullNameFor: person], phoneLabel, phoneNumber];
     
     [self dismissModalViewControllerAnimated: YES];
   }
@@ -107,6 +111,8 @@
 
 - (void)dealloc 
 {
+  [self.instructionsLabel release];
+  
   [super dealloc];
 }
 
