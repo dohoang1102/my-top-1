@@ -37,6 +37,27 @@
     return firstName;
 }
 
+- (void)updateInstructionsWithPerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
+{
+  self.instructionsLabel.text = 
+    [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite person. Next time you open My Top 1 you'll call him/her automatically.", 
+    [self fullNameFor: person], phoneLabel, phoneNumber];
+}
+
+- (void)saveFavoriteNumber:(NSString *)favoriteNumber
+{
+  NSCharacterSet *phoneNumberCharacters = [NSCharacterSet characterSetWithCharactersInString: @"+*0123456789"];
+  
+  NSArray *components = [favoriteNumber componentsSeparatedByCharactersInSet: [phoneNumberCharacters invertedSet]];
+  
+  favoriteNumber = [components componentsJoinedByString: @""];
+
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  [defaults setObject: favoriteNumber forKey:@"FavoriteNumber"];  
+  [defaults synchronize];
+}
+
 #pragma mark -
 #pragma mark ABPeoplePickerNavigationControllerDelegate
 
@@ -52,9 +73,11 @@
     CFStringRef phoneLabelReference = ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
     NSString *phoneLabel = (NSString *)ABAddressBookCopyLocalizedLabel(phoneLabelReference);
     
-    self.instructionsLabel.text = 
-      [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-      [self fullNameFor: person], phoneLabel, [phoneNumbers objectAtIndex: 0]];
+    NSString *phoneNumber = [phoneNumbers objectAtIndex: 0];
+    
+    [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];  
+    
+    [self saveFavoriteNumber: phoneNumber];
     
     [self dismissModalViewControllerAnimated: YES];
     
@@ -80,9 +103,9 @@
     
     NSString *phoneNumber = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, phonePropertyValueIndex);
     
-    self.instructionsLabel.text = 
-      [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite contact. Next time you open My Top 1 you'll call him/her automatically.", 
-      [self fullNameFor: person], phoneLabel, phoneNumber];
+    [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];
+    
+    [self saveFavoriteNumber: phoneNumber];
     
     [self dismissModalViewControllerAnimated: YES];
   }
