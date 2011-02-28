@@ -58,6 +58,15 @@
   [defaults synchronize];
 }
 
+- (void)selectFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
+{
+  [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];
+  
+  [self saveFavoriteNumber: phoneNumber];
+  
+  [self dismissModalViewControllerAnimated: YES];
+}
+
 #pragma mark -
 #pragma mark ABPeoplePickerNavigationControllerDelegate
 
@@ -75,11 +84,7 @@
     
     NSString *phoneNumber = [phoneNumbers objectAtIndex: 0];
     
-    [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];  
-    
-    [self saveFavoriteNumber: phoneNumber];
-    
-    [self dismissModalViewControllerAnimated: YES];
+    [self selectFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
     
     return NO;
   }
@@ -103,11 +108,7 @@
     
     NSString *phoneNumber = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, phonePropertyValueIndex);
     
-    [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];
-    
-    [self saveFavoriteNumber: phoneNumber];
-    
-    [self dismissModalViewControllerAnimated: YES];
+    [self selectFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
   }
   
 	return NO;
