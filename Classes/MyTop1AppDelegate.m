@@ -27,28 +27,18 @@
   return [[NSUserDefaults standardUserDefaults] stringForKey: @"FavoriteNumber"];
 }
 
-- (void)callTofavoritePersonOrShowMainView
-{
-  if([self mustResetFavoriteNumber])
-    [self resetFavoriteNumber];
-  
-  if([self favoriteNumber])
-    [Call toNumber: [self favoriteNumber]];
-  else
-  {
-    // Add the view controller's view to the window and display.
-    [self.window addSubview: viewController.view];
-    [self.window makeKeyAndVisible];
-  }  
-}
-
 #pragma mark -
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {        
-  // Override point for customization after application launch.
-  [self callTofavoritePersonOrShowMainView];
+  // Override point for customization after application launch.  
+  if(![self favoriteNumber])
+  {
+    // Add the view controller's view to the window and display.
+    [self.window addSubview: viewController.view];
+    [self.window makeKeyAndVisible];
+  }  
 
   return YES;
 }
@@ -84,7 +74,11 @@
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
-  [self callTofavoritePersonOrShowMainView];
+  if([self mustResetFavoriteNumber])
+    [self resetFavoriteNumber];
+  
+  if([self favoriteNumber])
+    [Call toNumber: [self favoriteNumber]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application 
