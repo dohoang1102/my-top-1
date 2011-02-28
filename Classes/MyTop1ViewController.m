@@ -3,7 +3,7 @@
 
 @implementation MyTop1ViewController
 
-@synthesize instructionsLabel;
+@synthesize instructionsLabel, setFavoritePersonButton;
 
 #pragma mark -
 #pragma mark IBActions
@@ -42,6 +42,9 @@
   self.instructionsLabel.text = 
     [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite person. Next time you open My Top 1 you'll call him/her automatically.", 
     [self fullNameFor: person], phoneLabel, phoneNumber];
+  
+  //self.setFavoritePersonButton.titleLabel.text = @"Change your favorite person";  
+  [self.setFavoritePersonButton setTitle: @"Change your favorite person" forState: UIControlStateNormal];
 }
 
 - (void)saveFavoriteNumber:(NSString *)favoriteNumber
@@ -139,6 +142,7 @@
 - (void)dealloc 
 {
   [self.instructionsLabel release];
+  [self.setFavoritePersonButton release];
   
   [super dealloc];
 }
