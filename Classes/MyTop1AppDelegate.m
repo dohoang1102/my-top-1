@@ -7,32 +7,48 @@
 @synthesize window, viewController;
 
 #pragma mark -
-#pragma mark Application lifecycle
+#pragma mark "Protected" methods
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
-{        
-  // Override point for customization after application launch.
+- (BOOL)mustResetFavoriteNumber
+{  
+  return [[NSUserDefaults standardUserDefaults] boolForKey: @"ResetFavoriteNumber"];
+}
+
+- (void)resetFavoriteNumber
+{
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject: nil forKey:@"FavoriteNumber"];  
+  [defaults setBool: NO forKey: @"ResetFavoriteNumber"];
+  [defaults synchronize];
+}
+
+- (NSString *)favoriteNumber
+{
+  return [[NSUserDefaults standardUserDefaults] stringForKey: @"FavoriteNumber"];
+}
+
+- (void)callTofavoritePersonOrShowMainView
+{
+  if([self mustResetFavoriteNumber])
+    [self resetFavoriteNumber];
   
-  BOOL resetFavoriteNumber = [defaults boolForKey: @"ResetFavoriteNumber"];
-  
-  if(resetFavoriteNumber)
-  {
-    [defaults setObject: nil forKey:@"FavoriteNumber"];  
-    [defaults setBool: NO forKey: @"ResetFavoriteNumber"];
-    [defaults synchronize];
-  }
-  
-  NSString *favoriteNumber = [defaults stringForKey: @"FavoriteNumber"];
-  
-  if(favoriteNumber)
-    [Call toNumber: favoriteNumber];
+  if([self favoriteNumber])
+    [Call toNumber: [self favoriteNumber]];
   else
   {
     // Add the view controller's view to the window and display.
     [self.window addSubview: viewController.view];
     [self.window makeKeyAndVisible];
-  }
+  }  
+}
+
+#pragma mark -
+#pragma mark Application lifecycle
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{        
+  // Override point for customization after application launch.
+  [self callTofavoritePersonOrShowMainView];
 
   return YES;
 }
@@ -68,6 +84,7 @@
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
+  [self callTofavoritePersonOrShowMainView];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application 
