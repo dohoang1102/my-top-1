@@ -14,6 +14,15 @@
   // Override point for customization after application launch.
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
+  BOOL resetFavoriteNumber = [defaults boolForKey: @"ResetFavoriteNumber"];
+  
+  if(resetFavoriteNumber)
+  {
+    [defaults setObject: nil forKey:@"FavoriteNumber"];  
+    [defaults setBool: NO forKey: @"ResetFavoriteNumber"];
+    [defaults synchronize];
+  }
+  
   NSString *favoriteNumber = [defaults stringForKey: @"FavoriteNumber"];
   
   if(favoriteNumber)
