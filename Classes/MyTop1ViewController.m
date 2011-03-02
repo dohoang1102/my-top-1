@@ -43,7 +43,6 @@
     [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite person. Next time you open My Top 1 you'll call him/her automatically.", 
     [self fullNameFor: person], phoneLabel, phoneNumber];
   
-  //self.setFavoritePersonButton.titleLabel.text = @"Change your favorite person";  
   [self.setFavoritePersonButton setTitle: @"Change your favorite person" forState: UIControlStateNormal];
 }
 
@@ -58,10 +57,11 @@
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
   [defaults setObject: favoriteNumber forKey:@"FavoriteNumber"];  
+  
   [defaults synchronize];
 }
 
-- (void)selectFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
+- (void)setFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
 {
   [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];
   
@@ -79,7 +79,7 @@
   CFTypeRef phonePropertyReference = ABRecordCopyValue(person, kABPersonPhoneProperty);
   
   NSArray *phoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(phonePropertyReference);
-                            
+
   if([phoneNumbers count] == 1)
   {
     CFStringRef phoneLabelReference = ABMultiValueCopyLabelAtIndex(phonePropertyReference, 0);
@@ -87,7 +87,7 @@
     
     NSString *phoneNumber = [phoneNumbers objectAtIndex: 0];
     
-    [self selectFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
+    [self setFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
     
     return NO;
   }
@@ -111,7 +111,7 @@
     
     NSString *phoneNumber = (NSString *)ABMultiValueCopyValueAtIndex(phonePropertyReference, phonePropertyValueIndex);
     
-    [self selectFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
+    [self setFavoritePerson: person using: phoneLabel withNumber: phoneNumber];
   }
   
 	return NO;
@@ -127,16 +127,7 @@
 
 - (void)didReceiveMemoryWarning 
 {
-	// Releases the view if it doesn't have a superview.
   [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload 
-{
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 - (void)dealloc 
