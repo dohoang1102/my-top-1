@@ -2,7 +2,7 @@
 
 @implementation UIAlertView (ShowMessage)
 
-+ (void)showMessage:(NSString *)message withTitle:(NSString *)title
++ (void)showMessage:(NSString*)message withTitle:(NSString*)title
 {
   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: title 
                                                       message: message
@@ -15,14 +15,14 @@
   [alertView release];
 }
 
-+ (void)showNoInternetConnectionMessage:(NSString *)noInternetConnectionMessage
-{
-  [self showMessage: noInternetConnectionMessage withTitle: @"No Internet Connection :("];
-}
-
-+ (void)showMessage:(NSString *)message
++ (void)showMessage:(NSString*)message
 {
   [self showMessage: message withTitle: @""];
+}
+
++ (void)showNoInternetConnectionMessage:(NSString*)noInternetConnectionMessage
+{
+  [self showMessage: noInternetConnectionMessage withTitle: @"No Internet Connection :("];
 }
 
 @end
