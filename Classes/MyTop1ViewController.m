@@ -56,7 +56,7 @@
 
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
-  [defaults setObject: favoriteNumber forKey:@"FavoriteNumber"];  
+  [defaults setObject: favoriteNumber forKey: @"FavoriteNumber"];  
   
   [defaults synchronize];
 }
