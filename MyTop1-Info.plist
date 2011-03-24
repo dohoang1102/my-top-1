@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>My Top 1</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>mytop1.png</string>
+	<string>my_top_1.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.notaseriouscompany.mytop1</string>
 	<key>CFBundleInfoDictionaryVersion</key>
