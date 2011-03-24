@@ -21,7 +21,7 @@
 {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
-  [defaults setObject: nil forKey:@"FavoriteNumber"];  
+  [defaults setObject: nil forKey: @"FavoriteNumber"];  
   [defaults setBool: NO forKey: @"ResetFavoriteNumber"];
   
   [defaults synchronize];
@@ -37,10 +37,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
-  // Override point for customization after application launch.  
   if(![self favoriteNumber])
   {
-    // Add the view controller's view to the window and display.
     [self.window addSubview: viewController.view];
     [self.window makeKeyAndVisible];
   }  
