@@ -18,11 +18,11 @@
 		AA193971133979630048FC7D /* my_top_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AA193970133979630048FC7D /* my_top_1.png */; };
 		AA2166AB1317E3C00064ED70 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2166AA1317E3C00064ED70 /* AddressBookUI.framework */; };
 		AA2167381317ECAC0064ED70 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2167371317ECAC0064ED70 /* AddressBook.framework */; };
-		AA26ABAB133AD10F00BC4499 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = AA26ABA2133AD10F00BC4499 /* Call.m */; };
-		AA26ABAC133AD10F00BC4499 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = AA26ABA4133AD10F00BC4499 /* Messages.m */; };
-		AA26ABAD133AD10F00BC4499 /* README.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = AA26ABA5133AD10F00BC4499 /* README.mkdn */; };
-		AA26ABAE133AD10F00BC4499 /* UIAlertView+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA26ABA7133AD10F00BC4499 /* UIAlertView+ShowMessage.m */; };
-		AA26ABAF133AD10F00BC4499 /* UIDevice+SupportedFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = AA26ABA9133AD10F00BC4499 /* UIDevice+SupportedFeatures.m */; };
+		AA370B20133AD6F60096922C /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B17133AD6F60096922C /* Call.m */; };
+		AA370B21133AD6F60096922C /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B19133AD6F60096922C /* Messages.m */; };
+		AA370B22133AD6F60096922C /* README.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = AA370B1A133AD6F60096922C /* README.mkdn */; };
+		AA370B23133AD6F60096922C /* UIAlertView+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B1C133AD6F60096922C /* UIAlertView+ShowMessage.m */; };
+		AA370B24133AD6F60096922C /* UIDevice+SupportedFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B1E133AD6F60096922C /* UIDevice+SupportedFeatures.m */; };
 		AA438938131C0976000AD80A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA438937131C0976000AD80A /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -43,16 +43,16 @@
 		AA193970133979630048FC7D /* my_top_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_top_1.png; sourceTree = "<group>"; };
 		AA2166AA1317E3C00064ED70 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		AA2167371317ECAC0064ED70 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		AA26ABA1133AD10F00BC4499 /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
-		AA26ABA2133AD10F00BC4499 /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
-		AA26ABA3133AD10F00BC4499 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
-		AA26ABA4133AD10F00BC4499 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
-		AA26ABA5133AD10F00BC4499 /* README.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mkdn; sourceTree = "<group>"; };
-		AA26ABA6133AD10F00BC4499 /* UIAlertView+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ShowMessage.h"; sourceTree = "<group>"; };
-		AA26ABA7133AD10F00BC4499 /* UIAlertView+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ShowMessage.m"; sourceTree = "<group>"; };
-		AA26ABA8133AD10F00BC4499 /* UIDevice+SupportedFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+SupportedFeatures.h"; sourceTree = "<group>"; };
-		AA26ABA9133AD10F00BC4499 /* UIDevice+SupportedFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+SupportedFeatures.m"; sourceTree = "<group>"; };
-		AA26ABAA133AD10F00BC4499 /* UIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitHelpers.h; sourceTree = "<group>"; };
+		AA370B16133AD6F60096922C /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
+		AA370B17133AD6F60096922C /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
+		AA370B18133AD6F60096922C /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		AA370B19133AD6F60096922C /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
+		AA370B1A133AD6F60096922C /* README.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mkdn; sourceTree = "<group>"; };
+		AA370B1B133AD6F60096922C /* UIAlertView+ShowMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ShowMessage.h"; sourceTree = "<group>"; };
+		AA370B1C133AD6F60096922C /* UIAlertView+ShowMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ShowMessage.m"; sourceTree = "<group>"; };
+		AA370B1D133AD6F60096922C /* UIDevice+SupportedFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+SupportedFeatures.h"; sourceTree = "<group>"; };
+		AA370B1E133AD6F60096922C /* UIDevice+SupportedFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+SupportedFeatures.m"; sourceTree = "<group>"; };
+		AA370B1F133AD6F60096922C /* UIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitHelpers.h; sourceTree = "<group>"; };
 		AA438937131C0976000AD80A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AA4389F3131C2AD1000AD80A /* README.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mkdn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AA26ABA0133AD10F00BC4499 /* UIKitHelpers */,
+				AA370B15133AD6F60096922C /* UIKitHelpers */,
 				AA74A4B713183EA10082B712 /* App Delegate */,
 				AA74A4B813183EC40082B712 /* Main View Controller */,
 			);
@@ -137,19 +137,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AA26ABA0133AD10F00BC4499 /* UIKitHelpers */ = {
+		AA370B15133AD6F60096922C /* UIKitHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				AA26ABA1133AD10F00BC4499 /* Call.h */,
-				AA26ABA2133AD10F00BC4499 /* Call.m */,
-				AA26ABA3133AD10F00BC4499 /* Messages.h */,
-				AA26ABA4133AD10F00BC4499 /* Messages.m */,
-				AA26ABA5133AD10F00BC4499 /* README.mkdn */,
-				AA26ABA6133AD10F00BC4499 /* UIAlertView+ShowMessage.h */,
-				AA26ABA7133AD10F00BC4499 /* UIAlertView+ShowMessage.m */,
-				AA26ABA8133AD10F00BC4499 /* UIDevice+SupportedFeatures.h */,
-				AA26ABA9133AD10F00BC4499 /* UIDevice+SupportedFeatures.m */,
-				AA26ABAA133AD10F00BC4499 /* UIKitHelpers.h */,
+				AA370B16133AD6F60096922C /* Call.h */,
+				AA370B17133AD6F60096922C /* Call.m */,
+				AA370B18133AD6F60096922C /* Messages.h */,
+				AA370B19133AD6F60096922C /* Messages.m */,
+				AA370B1A133AD6F60096922C /* README.mkdn */,
+				AA370B1B133AD6F60096922C /* UIAlertView+ShowMessage.h */,
+				AA370B1C133AD6F60096922C /* UIAlertView+ShowMessage.m */,
+				AA370B1D133AD6F60096922C /* UIDevice+SupportedFeatures.h */,
+				AA370B1E133AD6F60096922C /* UIDevice+SupportedFeatures.m */,
+				AA370B1F133AD6F60096922C /* UIKitHelpers.h */,
 			);
 			path = UIKitHelpers;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				2899E5220DE3E06400AC0155 /* MyTop1ViewController.xib in Resources */,
 				AA438938131C0976000AD80A /* Settings.bundle in Resources */,
 				AA193971133979630048FC7D /* my_top_1.png in Resources */,
-				AA26ABAD133AD10F00BC4499 /* README.mkdn in Resources */,
+				AA370B22133AD6F60096922C /* README.mkdn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,10 +239,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* MyTop1AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* MyTop1ViewController.m in Sources */,
-				AA26ABAB133AD10F00BC4499 /* Call.m in Sources */,
-				AA26ABAC133AD10F00BC4499 /* Messages.m in Sources */,
-				AA26ABAE133AD10F00BC4499 /* UIAlertView+ShowMessage.m in Sources */,
-				AA26ABAF133AD10F00BC4499 /* UIDevice+SupportedFeatures.m in Sources */,
+				AA370B20133AD6F60096922C /* Call.m in Sources */,
+				AA370B21133AD6F60096922C /* Messages.m in Sources */,
+				AA370B23133AD6F60096922C /* UIAlertView+ShowMessage.m in Sources */,
+				AA370B24133AD6F60096922C /* UIDevice+SupportedFeatures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
