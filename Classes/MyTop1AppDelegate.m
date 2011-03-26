@@ -65,7 +65,13 @@
   }
   
   if([self favoriteNumber])
+  {
+    if(![UIDevice canPerformPhoneCalls] && [[self.window subviews] count] == 0)
+      [self showMyTop1View];
+    
     [Call toNumber: [self favoriteNumber]];
+  }
+    
 }
 
 #pragma mark -

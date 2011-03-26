@@ -6,6 +6,79 @@
 @synthesize instructionsLabel, setFavoritePersonButton;
 
 #pragma mark -
+#pragma mark "Protected" methods
+
+- (NSString *)fullNameFor:(ABRecordRef)person
+{
+  NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+  NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+  
+  if(lastName)
+    return [firstName stringByAppendingFormat: @" %@", lastName];
+  else
+    return firstName;
+}
+
+- (void)setInstructionsWithPersonName:(NSString *)personName using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber
+{
+  self.instructionsLabel.text = 
+    [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite person. Next time you open My Top 1 you'll call him/her automatically.", 
+   personName, phoneLabel, phoneNumber];
+  
+  [self.setFavoritePersonButton setTitle: @"Change your favorite person" forState: UIControlStateNormal];
+}
+
+- (void)saveOnUserDefaults:(NSString *)favoriteNumber forPerson:(NSString *)person using:(NSString *)phoneLabel;
+{
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  [defaults setObject: person forKey: @"FavoritePersonName"];  
+  [defaults setObject: phoneLabel forKey: @"FavoriteNumberLabel"];  
+  [defaults setObject: favoriteNumber forKey: @"FavoriteNumberWithFullFormat"];  
+}
+
+- (void)saveFavoriteNumber:(NSString *)favoriteNumber
+{
+  NSCharacterSet *phoneNumberCharacters = [NSCharacterSet characterSetWithCharactersInString: @"+*0123456789"];
+  
+  NSArray *components = [favoriteNumber componentsSeparatedByCharactersInSet: [phoneNumberCharacters invertedSet]];
+  
+  favoriteNumber = [components componentsJoinedByString: @""];
+  
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  [defaults setObject: favoriteNumber forKey: @"FavoriteNumber"];  
+  
+  [defaults synchronize];
+}
+
+- (void)setFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
+{
+  [self setInstructionsWithPersonName: [self fullNameFor: person] using: phoneLabel withNumber: phoneNumber];
+  
+  [self saveOnUserDefaults: phoneNumber forPerson: [self fullNameFor: person] using: phoneLabel];
+  
+  [self saveFavoriteNumber: phoneNumber];
+  
+  [self dismissModalViewControllerAnimated: YES];
+}
+
+#pragma mark -
+#pragma mark View Lifecycle
+
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+ 
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  if([defaults stringForKey: @"FavoriteNumber"])
+    [self setInstructionsWithPersonName: [defaults stringForKey: @"FavoritePersonName"]
+                                  using: [defaults stringForKey: @"FavoriteNumberLabel"]
+                             withNumber: [defaults stringForKey: @"FavoriteNumberWithFullFormat"]];
+}
+
+#pragma mark -
 #pragma mark IBActions
 
 - (IBAction)showAddressBookContacts:(id)sender
@@ -21,53 +94,6 @@
   [self presentModalViewController: peoplePicker animated: YES];
   
   [peoplePicker release];   
-}
-
-#pragma mark -
-#pragma mark "Protected" methods
-
-- (NSString *)fullNameFor:(ABRecordRef)person
-{
-  NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-  NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-  
-  if(lastName)
-    return [firstName stringByAppendingFormat: @" %@", lastName];
-  else
-    return firstName;
-}
-
-- (void)updateInstructionsWithPerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
-{
-  self.instructionsLabel.text = 
-    [NSString stringWithFormat: @"You chose %@ (%@: %@) as your favorite person. Next time you open My Top 1 you'll call him/her automatically.", 
-    [self fullNameFor: person], phoneLabel, phoneNumber];
-  
-  [self.setFavoritePersonButton setTitle: @"Change your favorite person" forState: UIControlStateNormal];
-}
-
-- (void)saveFavoriteNumber:(NSString *)favoriteNumber
-{
-  NSCharacterSet *phoneNumberCharacters = [NSCharacterSet characterSetWithCharactersInString: @"+*0123456789"];
-  
-  NSArray *components = [favoriteNumber componentsSeparatedByCharactersInSet: [phoneNumberCharacters invertedSet]];
-  
-  favoriteNumber = [components componentsJoinedByString: @""];
-
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  
-  [defaults setObject: favoriteNumber forKey: @"FavoriteNumber"];  
-  
-  [defaults synchronize];
-}
-
-- (void)setFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
-{
-  [self updateInstructionsWithPerson: person using: phoneLabel withNumber: phoneNumber];
-  
-  [self saveFavoriteNumber: phoneNumber];
-  
-  [self dismissModalViewControllerAnimated: YES];
 }
 
 #pragma mark -
