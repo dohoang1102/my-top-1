@@ -8,15 +8,23 @@
 #pragma mark -
 #pragma mark "Protected" methods
 
-- (NSString *)fullNameFor:(ABRecordRef)person
+- (NSString *)displayNameFor:(ABRecordRef)person
 {
   NSString *firstName = (NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
   NSString *lastName = (NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+  NSString *nickname = (NSString *)ABRecordCopyValue(person, kABPersonNicknameProperty);
   
-  if(lastName)
+  if(firstName && lastName)
     return [firstName stringByAppendingFormat: @" %@", lastName];
-  else
+  else if(firstName)
     return firstName;
+  else if(nickname)
+    return nickname;
+  else if(lastName)
+    return lastName;
+  else
+    return @"someone";
+  
 }
 
 - (void)setInstructionsWithPersonName:(NSString *)personName using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber
@@ -54,9 +62,9 @@
 
 - (void)setFavoritePerson:(ABRecordRef)person using:(NSString *)phoneLabel withNumber:(NSString *)phoneNumber;
 {
-  [self setInstructionsWithPersonName: [self fullNameFor: person] using: phoneLabel withNumber: phoneNumber];
+  [self setInstructionsWithPersonName: [self displayNameFor: person] using: phoneLabel withNumber: phoneNumber];
   
-  [self saveOnUserDefaults: phoneNumber forPerson: [self fullNameFor: person] using: phoneLabel];
+  [self saveOnUserDefaults: phoneNumber forPerson: [self displayNameFor: person] using: phoneLabel];
   
   [self saveFavoriteNumber: phoneNumber];
   
