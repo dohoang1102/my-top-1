@@ -1,6 +1,8 @@
 My Top 1
 ====================================================================
 
+![My Top 1](https://github.com/notaseriouscompany/my-top-1/raw/master/my_top_1_small.png)
+
 My Top 1 is an iPhone app that does one thing and one thing only, but unfortunately this thing is not killing nazis. It calls to your favorite person just tapping the app icon. 
 
 I know, it's not so cool as killing nazis, but I really don't believe Apple would approve such app.
