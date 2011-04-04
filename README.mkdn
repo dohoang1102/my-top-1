@@ -1,0 +1,51 @@
+My Top 1
+====================================================================
+
+My Top 1 is an iPhone app that does one thing and one thing only, but unfortunately this thing is not killing nazis. It calls to your favorite person just tapping the app icon. 
+
+I know, it's not so cool as killing nazis, but I really don't believe Apple would approve such app.
+
+
+Why?
+--------------------------------------------------------------------
+
+I don't know, maybe Apple don't want apps that kill people on App Store, even if these people are nazis. It's an stupid rule, I know.
+
+
+No, asshole, why did you developed this app?
+--------------------------------------------------------------------
+
+Not that I think I need to justify myself to someone so rude, but if you think about, you'll come to conclusion that most of the time you call to the same person: your girlfriend/wife, your mom, your parole officer... So, why not to be able to do so with just one tap?
+
+
+How?
+--------------------------------------------------------------------
+
+Originally, My Top 1 used magical libraries to guess the person you call most frequently, and so call him/her automatically when you open it. Unfortunately, Apple doesn't like magical libraries and it didn't approve my app. So, I had to handle this at the boring way:
+
+- First time you open open My Top 1 you have to pick someone from Contacts to be your favorite person;
+- After that, when you open My Top 1 again, it will automatically call to that person.
+
+
+And if I want to change my favorite person?
+--------------------------------------------------------------------
+
+<delete>I don't care, once you chose your favorite person it's carved in stone.</delete> No problem, I understand eventually your girlfriend will break up with you, so you'll want to be able to set your city's hooker service as your favorite contact. In these cases, just go to My Top 1 preferences on Settings app, and reset your favorite number.
+
+
+How about a instructional video?
+--------------------------------------------------------------------
+
+How about stop suggesting things that require some work from me?
+
+
+How can I buy it, and how much it costs?
+--------------------------------------------------------------------
+
+You can buy My Top 1 on iPhone App Store, paying US$0.99. That's almost free, so don't even think about complaining about the price.
+
+
+What can I do with the code of My Top 1?
+--------------------------------------------------------------------
+
+Anything, including selling an identic app on App Store and make a fortune stealing all possible buyers of My Top 1. Am I a nice guy or not?
