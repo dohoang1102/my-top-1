@@ -24,6 +24,7 @@
 		AA370B23133AD6F60096922C /* UIAlertView+ShowMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B1C133AD6F60096922C /* UIAlertView+ShowMessage.m */; };
 		AA370B24133AD6F60096922C /* UIDevice+SupportedFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = AA370B1E133AD6F60096922C /* UIDevice+SupportedFeatures.m */; };
 		AA438938131C0976000AD80A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA438937131C0976000AD80A /* Settings.bundle */; };
+		AA71A91A134942F200371B36 /* my_top_1_small.png in Resources */ = {isa = PBXBuildFile; fileRef = AA71A919134942F200371B36 /* my_top_1_small.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		AA370B1F133AD6F60096922C /* UIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitHelpers.h; sourceTree = "<group>"; };
 		AA438937131C0976000AD80A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AA4389F3131C2AD1000AD80A /* README.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mkdn; sourceTree = "<group>"; };
+		AA71A919134942F200371B36 /* my_top_1_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_top_1_small.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				AA4389F3131C2AD1000AD80A /* README.mkdn */,
 				8D1107310486CEB800E47090 /* MyTop1-Info.plist */,
 				AA193970133979630048FC7D /* my_top_1.png */,
+				AA71A919134942F200371B36 /* my_top_1_small.png */,
 				AA438937131C0976000AD80A /* Settings.bundle */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				2899E5210DE3E06400AC0155 /* MyTop1ViewController.xib */,
@@ -226,6 +229,7 @@
 				AA438938131C0976000AD80A /* Settings.bundle in Resources */,
 				AA193971133979630048FC7D /* my_top_1.png in Resources */,
 				AA370B22133AD6F60096922C /* README.mkdn in Resources */,
+				AA71A91A134942F200371B36 /* my_top_1_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +257,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Elomar Nascimento dos Santos (SEZ79GBPJT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyTop1_Prefix.pch;
 				INFOPLIST_FILE = "MyTop1-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = MyTop1;
+				PROVISIONING_PROFILE = "D734FD29-6FFC-4B54-A105-FF30812EABFB";
 			};
 			name = Debug;
 		};
@@ -268,12 +274,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Elomar Nascimento dos Santos (SEZ79GBPJT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MyTop1_Prefix.pch;
 				INFOPLIST_FILE = "MyTop1-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = MyTop1;
+				PROVISIONING_PROFILE = "D734FD29-6FFC-4B54-A105-FF30812EABFB";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
